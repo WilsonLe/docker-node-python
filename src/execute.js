@@ -11,7 +11,6 @@ const execute = async (filename, args = []) => {
 		const pyProcess = spawn(pyExec, [filename, ...args]);
 		let output = '';
 
-		// Promisify stdout. right now its listening to 'data' asyncly. nid to return the first data it heard.
 		pyProcess.stdout.on('data', data => {
 			output = data.toString();
 		});
