@@ -1,8 +1,12 @@
-const app = require('express')();
+const express = require('express');
+const app = express();
 const execute = require('./execute');
 
+app.use(express.json());
+
 app.get('/', async (req, res) => {
-	const data = await execute('src/hello.py');
+	const { query } = req.body;
+	const data = JSON.parse(await execute('src/translate.py', [query]));
 	res.send(data);
 });
 
