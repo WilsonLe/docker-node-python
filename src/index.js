@@ -1,9 +1,8 @@
 const app = require('express')();
 const execute = require('./execute');
 
-app.get('/', (req, res) => {
-	const data = execute('src/hello.py');
-	console.log(JSON.stringify(data));
+app.get('/', async (req, res) => {
+	const data = await execute('src/hello.py');
 	res.send(data);
 });
 
